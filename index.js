@@ -10,8 +10,8 @@ app.get('/', (req, res) => {
   res.send('API do monitoramento está rodando!');
 });
 
-app.use('/api/medicoes', require('./Routes/medicoes'));
-app.use('/api/alertas', require('./Routes/alertas'));
+app.use('/api/medicoes', require('./routes/medicoes'));
+app.use('/api/alertas', require('./routes/alertas'));
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
