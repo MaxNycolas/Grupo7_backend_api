@@ -1,22 +1,26 @@
-# Imagem base
+# Usando Node 18 LTS
 FROM node:18
 
 # Definir diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copiar arquivos de dependência
+# Copiar os arquivos de dependências
 COPY package*.json ./
 
 # Instalar dependências
 RUN npm install
 
-# Copiar o resto do código
+# Copiar o restante do código
 COPY . .
 
-# Expor a porta (vai usar a variável PORT, default 3000)
+# Definir variável de ambiente padrão (caso não venha do Easypanel)
+ENV PORT=3000
+
+# Expor a porta para fora do container
 EXPOSE 3000
 
-# Comando de inicialização
+# Rodar a aplicação
 CMD ["npm", "start"]
+
 
 
