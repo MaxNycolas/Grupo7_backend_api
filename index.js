@@ -13,7 +13,8 @@ app.get('/', (req, res) => {
 app.use('/api/medicoes', require('./routes/medicoes'));
 app.use('/api/alertas', require('./routes/alertas'));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+
