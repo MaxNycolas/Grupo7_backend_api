@@ -14,7 +14,8 @@ RUN npm install
 COPY . .
 
 # Expor a porta (vai usar a variável PORT, default 3000)
-EXPOSE 3000
+EXPOSE 3001
 
 # Comando de inicialização
 CMD ["npm", "start"]
+
