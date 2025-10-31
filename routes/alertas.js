@@ -4,7 +4,7 @@ const db = require('../db');
 
 // GET - listar alertas
 router.get('/', (req, res) => {
-  db.query('SELECT * FROM alertas ORDER BY data_hora DESC LIMIT 50', (err, results) => {
+  db.query('SELECT * FROM alertas ORDER BY data_hora DESC', (err, results) => {
     if (err) return res.status(500).json({ error: err });
     res.json(results);
   });
@@ -21,3 +21,4 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
