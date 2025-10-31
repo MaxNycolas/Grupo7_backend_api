@@ -21,11 +21,12 @@ router.post('/', (req, res) => {
 
 // GET - listar últimas medições
 router.get('/', (req, res) => {
-  db.query('SELECT * FROM medicoes ORDER BY data_hora', (err, results) => {
+  db.query('SELECT * FROM medicoes ORDER BY data_hora DESC', (err, results) => {
     if (err) return res.status(500).json({ error: err });
     res.json(results);
   });
 });
 
 module.exports = router;
+
 
