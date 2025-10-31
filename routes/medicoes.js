@@ -19,14 +19,22 @@ router.post('/', (req, res) => {
   });
 });
 
-// GET - listar últimas medições
-router.get('/', (req, res) => {
-  db.query('SELECT * FROM medicoes ORDER BY data_hora DESC', (err, results) => {
+// GET - exportar todas as medições em JSON
+router.get('/export', (req, res) => {
+  const query = 'SELECT * FROM medicoes ORDER BY data_hora DESC';
+
+  db.query(query, (err, results) => {
     if (err) return res.status(500).json({ error: err });
-    res.json(results);
+
+    // Cabeçalhos para forçar o download
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Disposition', 'attachment; filename="medicoes.json"');
+
+    // Envia os dados completos como arquivo
+    res.send(JSON.stringify(results, null, 2));
   });
 });
 
-module.exports = router;
+
 
 
