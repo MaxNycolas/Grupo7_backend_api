@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 
 // GET - listar últimas medições
 router.get('/', (req, res) => {
-  const query = 'SELECT * FROM medicoes ORDER BY data_hora DESC LIMIT 50';
+  const query = 'SELECT * FROM medicoes ORDER BY data_hora DESC';
   db.query(query, (err, results) => {
     if (err) return res.status(500).json({ error: err });
     res.json(results);
@@ -40,6 +40,7 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router;
+
 
 
 
